@@ -1,0 +1,64 @@
+// Include the libraries necessary for graphics
+    import java.awt.*;
+    import javax.swing.*;
+
+
+// Create a subclass of JComponent
+// This will allow us to draw graphics
+
+    class KevinMondrian extends JComponent {
+
+
+// This special method is automatically called when the scene needs to be drawn.
+
+    public void paintComponent(Graphics g) {
+
+// PUT YOUR CODE TO PAINT MONDRIAN-STYLE IN HERE!!!!!!!!!!!!!!!!!!!!!!
+// You need to use the Graphics object called "g" to do the painting.
+
+g.setColor(Color.white);
+g.fillRect(1, 1, 800, 1800);
+g.setColor(Color.black);
+g.fillRect(30, 30, 800, 15);
+g.fillRect(29, 50, 797, 13);
+g.fillRect(830,50,8,1900);
+g.fillRect(745,50,10,1900);
+g.fillRect(565,50, 15, 1900);
+g.fillRect(400, 50, 15, 1700);
+g.fillRect(85, 60, 10, 1800);
+g.fillRect(30, 80, 800, 15);
+g.setColor(Color.magenta);
+g.fillRect(20, 400,400,30);
+g.setColor(Color.black);
+g.fillRect(30, 120, 800, 15);
+g.fillRect(30, 150, 800, 3);
+g.fillRect(30, 300, 800, 13);
+g.fillRect(30, 250, 800, 10);
+g.fillRect(30, 500, 800, 20);
+g.fillRect(30, 450, 800, 25);
+g.fillRect(30, 400, 800, 30);
+g.setColor(Color.blue);
+g.fillRect(90, 90, 180, 30);
+g.setColor(Color.black);
+g.fillRect(150, 60, 15, 1800);
+g.setColor(Color.green);
+g.fillRect(400, 300, 20, 100);
+g.setColor(Color.red);
+g.drawString("Kevin Morales", 30, 10);
+
+    }
+
+    public static void main(String[] args) {
+        Mondrian my_mondrian = new Mondrian();
+        JFrame frame = new JFrame();
+
+        // Set the size of the window
+        frame.add(my_mondrian);
+
+        // Set the title of the window
+        frame.setTitle("Mondrian Art!");
+        frame.setSize(800, 600);
+        frame.setVisible(true);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+}
