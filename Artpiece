@@ -1,0 +1,33 @@
+//Import libraries
+import java.awt.*;
+import javax.swing.*;
+
+
+// This will allow us to draw graphics
+    class Mondrian extends JComponent {
+
+
+// This method is automatically called when the scene needs to be drawn.
+    public void paintComponent(Graphics g) {
+
+// You need to use the Graphics object called "g" to do the painting.
+    g.fillRect(12, 40, 40, 50);
+// Here's an example of a line
+    g.drawLine(50, 50, 150, 150);
+        
+    }
+	
+public static void main(String[] args) {
+    Mondrian my_mondrian = new Mondrian();
+    JFrame frame = new JFrame();
+
+// Set the size of the window
+    frame.add(my_mondrian);
+
+// Set the title of the window
+    frame.setTitle("Mondrian Art!");
+    frame.setSize(800, 600);
+    frame.setVisible(true);
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+}
