@@ -1,0 +1,27 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/**
+ *
+ * @author Kevin Morales
+ */
+public class VectorRunner 
+{
+public static void main(String[] args)
+{
+        Vector v;
+        v = new Vector(1.f,2.f,3.f);
+        
+        System.out.println("normL1 of (1.,2.,3.) is " + v.normL1());
+        System.out.println("normL2 of (1.,2.,3.) is " + v.normL2());
+        System.out.println("add of (1.,2.,3.) and (3.,2.,1.) is " + v.add (1.f,2.f,3.f,4.f,5.f,6.f));
+        System.out.println("subtract of (3.,2.,1.,) and (1.,2.,3.) is " + v.subtract(1.f,2.f,3.f));
+        System.out.println("dotProduct of (1.,2.,3.,) and (3.,2.,1.,) is " + v.dotProduct(1.f, 2.f, 3.f, 3.f,2.f, 1.f));
+        System.out.println("scalarMultiply of (3.,2.,1.) and (24) is " + v.scalarMultiply(24));
+        System.out.println("getUnitVector of (3.,2.,1.,) is " + v.getUnitVector(3.f,2.f,1.f));
+        System.out.println("angle of (1.,2.,3.,) and (3.,2.,1.,) is " + v.angle (3.f,2.f,1.f,3.f,2.f,1.f));
+}
+}
+
