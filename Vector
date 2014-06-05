@@ -1,0 +1,92 @@
+public class Vector {
+
+    float a;
+    float b;
+    float c;
+    float x;
+    float y;
+    float z;
+    int s;
+//*This part is where the Method
+    public Vector(float newa, float newb, float newc) {
+        a = newa;
+        b = newb;
+        c = newc;
+    }
+    
+    public Vector add(float a, float b, float c, float x, float y, float z)
+    {
+     float vw_1=a+x;
+     float vw_2=b+y;
+     float vw_3=c+z;
+     Vector ans=new Vector(vw_1,vw_2,vw_3);
+             return ans;
+}
+    public Vector subtract(float a, float b,float c)
+    {
+        float vw_1=a-x;
+        float vw_2=b-y;
+        float vw_3=c-z;
+        Vector ans=new Vector(vw_1,vw_2,vw_3);
+        return ans;
+    }
+    public float dotProduct(float a, float b, float c, float x, float y, float z)
+    {
+       float vw_1=a*x;
+       float vw_2=b*y;
+       float vw_3=c*z;
+      float ans = ((vw_1) + (vw_2) + (vw_3));
+       return ans;
+               
+    }
+    public float normL1()
+    {
+            return Math.abs(a)+ Math.abs(b)+ Math.abs(c);
+    }
+    public float normL2()
+    {
+            return (float) Math.sqrt(a*a+b*b+c*c);
+    }
+    public Vector scalarMultiply(int s)
+    {
+       float x = s*(a);
+       float y = s*(b);
+       float z = s*(c);
+       Vector ans;
+        ans = new Vector(x,y,z); 
+        return ans; 
+    }
+    public Vector getUnitVector(float a, float b, float c)
+    {     
+        float e = (a*a);
+        float f = (b*b);
+        float g = (c*c);
+        float m = (float) Math.sqrt(e+f+g);
+        Vector p;
+        p = new Vector(a/m,b/m,c/m);
+        return p;
+    }
+    public float angle(float a,float b,float c,float x, float y,float z)
+    {
+            float D;
+            D = (float)(a*x)+(b*y)+(c*z);
+            float vw_1=a*x;
+            float vw_2=b*y;
+            float vw_3=c*z;
+            float ans = (vw_1) + (vw_2) + (vw_3);
+            double m = Math.sqrt(a*a+b*b+c*c);
+            double n = Math.sqrt(x*x+y*y+z*z);
+            double t = (D/(m*n));
+            return (float) Math.acos(t);
+    }       
+    public String toString() 
+    {
+    return ("<"+ a + "," + b + "," + c + ">");
+}
+
+}
+
+
+    
+ 
+
