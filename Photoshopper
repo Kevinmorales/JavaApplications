@@ -1,0 +1,139 @@
+//Libraries necessary for graphics
+import java.awt.*;
+import java.awt.image.*;
+import javax.swing.*;
+import javax.imageio.ImageIO;
+import java.io.File;
+import java.io.IOException;
+import java.net.URL;
+
+        
+// Subclass of JComponent
+//Class Photoshopper extends JComponent {
+
+    BufferedImage img;
+    int width = 0;
+    int height = 0;
+
+    public void loadImage(String filename) {
+        img = null;
+        try {
+            img = ImageIO.read(new URL(filename));
+            width = img.getWidth();
+            height = img.getHeight();
+        } catch (IOException e) {
+            System.out.println("Could not read image! " + filename);
+        }
+    }
+
+    public int getImageWidth() {
+        return width;
+    }
+
+    public int getImageHeight() {
+        return height;
+    }
+
+
+    /*
+        Function.
+    */
+    public int convertToBWPixelRed(int r, int g, int b)
+    {
+        return r;
+    }
+    public int convertToBWPixelGreen(int r,int g,int b)
+    {   
+        return g;
+    }
+    public int convertToBWPixelBlue(int r,int g, int b)
+    {  
+        return b;
+    }
+    public int convertToBWPixelAverage(int r,int g,int b)
+    {
+        return r+g+b/3; 
+    }
+    public int convertToBWPixelInterpolated(int r,int g,int b,float rw,float gw,float bw)
+    {
+     return (int)((r*rw)+(g*gw)+(b*bw));
+    }
+    public int convertToBWPixelMax (int r,int g, int b)
+    {
+        int c = Math.max(r,g);
+        int d = Math.max(c, b);
+        return (d);
+    }
+    public int convertToBWPixelMin (int r,int g,int b)
+    {
+         int e = Math.min(r,g);
+         int f = Math.min(e,b);
+         return (f);
+    }
+    public int convertToBWPixelDesaturation (int r,int g,int b)
+    {
+            int e = Math.max(r,g);
+            int max = Math.max (e,b);
+            int f = Math.min(r,g);
+            int min = Math.min(f,b);
+            return (max+min)/2;
+    }
+
+
+
+    public void convertToBW() {
+        BufferedImage newImage = new BufferedImage(img.getWidth(), img.getHeight(), BufferedImage.TYPE_BYTE_GRAY);
+        for (int i = 0; i < img.getWidth(); i++) {
+            for (int j = 0; j < img.getHeight(); j++) {
+                int rgb = img.getRGB(i, j);
+                Color c = new Color(rgb);
+                int r = c.getRed();
+                int g = c.getGreen();
+                int b = c.getBlue();
+
+                // r, g, and b are integer pixel values that you need to convert to a grayscale value
+                //
+                //
+                // new_pixel should get the value calculated by your function
+                // Update the next line to call one of your functions
+                int new_pixel = convertToBWPixelMax(r,g,b);
+                        
+                //
+                //
+
+                // Leave this part alone.  :)
+                Color new_c = new Color(c.getAlpha(), new_pixel, new_pixel, new_pixel);
+                int new_int = new_c.getRGB();
+                newImage.setRGB(i, j, new_int);
+            }
+        }
+        img = newImage;
+    }
+	
+    // This special method is automatically called when the scene needs to be drawn.
+    public void paintComponent(Graphics g) {
+        g.drawImage(img, 0, 0, null);
+    }
+	
+    public static void main(String[] args) {
+
+        Photoshopper my_photoshopper = new Photoshopper();
+        my_photoshopper.loadImage(args[0]);
+        my_photoshopper.convertToBW();
+
+        JFrame frame = new JFrame();
+
+        // Size of the window
+        frame.add(my_photoshopper);
+
+        // Title of the window
+        frame.setTitle("Photoshopper: " + args[0]);
+        frame.setSize(my_photoshopper.getImageWidth(), my_photoshopper.getImageHeight());
+        frame.setVisible(true);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+
+    private int r(int i) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+}
